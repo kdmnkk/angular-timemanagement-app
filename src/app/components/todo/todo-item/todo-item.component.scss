@@ -1,0 +1,19 @@
+.task {
+  width: 100%;
+  position: relative;
+  margin: 15px 0;
+
+  .icon {
+    opacity: 0.4;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .data {
+    position: absolute;
+    right: 20px;
+    top: 30px;
+  }
+}

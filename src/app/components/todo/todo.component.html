@@ -1,0 +1,14 @@
+<app-title class="title" [title]="title"></app-title>
+
+<button class="addTaskBtn" color="primary" (click)="openForm()" mat-flat-button>Create new task</button>
+
+<app-add-task-form
+  *ngIf="openFormValue"
+  (newItemEvent)="closeForm($event)"
+></app-add-task-form>
+
+<div class="todos">
+  <app-todo-item></app-todo-item>
+  <app-todo-item></app-todo-item>
+  <app-todo-item></app-todo-item>
+</div>

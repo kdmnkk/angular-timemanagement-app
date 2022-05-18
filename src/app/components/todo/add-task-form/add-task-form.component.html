@@ -1,0 +1,32 @@
+ <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="" value="" formControlName="title">
+      <mat-hint *ngIf="form.get('title')?.invalid && form.get('title')?.touched" >
+        incorrect title
+      </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput style="resize: none;" placeholder="" formControlName="description"></textarea>
+      <mat-hint *ngIf="form.get('description')?.invalid && form.get('description')?.touched" >
+        Incorrect description.
+      </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="data">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+
+   <div class="buttons">
+     <button type="submit" [disabled]="form.invalid" class="addTaskBtn addTaskBtn_long" color="accent" mat-flat-button>Add task</button>
+     <button (click)="closeForm()" type="button" class="addTaskBtn" color="accent" mat-stroked-button>Cancel</button>
+   </div>
+
+  </form>

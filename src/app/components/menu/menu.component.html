@@ -1,0 +1,12 @@
+<mat-toolbar class="menu" color="primary">
+  <ng-container *ngFor="let item of NavItems">
+    <button
+      routerLink="/{{ item.route }}"
+      mat-icon-button class="menu-item"
+      [class.active]="isRouteActive(item.route)"
+    >
+      <mat-icon class="icon">{{ item.icon }}</mat-icon>
+    </button>
+  </ng-container>
+</mat-toolbar>
+
