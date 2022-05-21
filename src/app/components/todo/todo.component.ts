@@ -1,18 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss']
 })
-export class TodoComponent implements OnInit {
+export class TodoComponent {
   title = 'Your TODOs';
   openFormValue = false;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  constructor() {}
 
   openForm(): void {
     this.openFormValue = !this.openFormValue;
@@ -21,5 +18,7 @@ export class TodoComponent implements OnInit {
   closeForm(value: boolean): void {
     this.openFormValue = value;
   }
+
+
 }
 
