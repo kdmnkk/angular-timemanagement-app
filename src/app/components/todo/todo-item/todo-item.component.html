@@ -1,7 +1,9 @@
 <mat-card class="task">
   <mat-card-header class="header">
     <mat-card-title>
-      <mat-checkbox>Check me!</mat-checkbox>
+      <mat-checkbox
+        [checked]="done"
+      >{{title}}</mat-checkbox>
 
       <button mat-icon-button>
         <mat-icon class="icon">create</mat-icon>
@@ -11,14 +13,12 @@
       </button>
     </mat-card-title>
 
-    <mat-card-subtitle class="data">13/34/2002</mat-card-subtitle>
+    <mat-card-subtitle class="data">{{data}}</mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>
     <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
+      {{description}}
     </p>
   </mat-card-content>
 </mat-card>

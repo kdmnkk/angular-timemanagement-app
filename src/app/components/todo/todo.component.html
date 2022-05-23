@@ -3,15 +3,21 @@
 <button class="addTaskBtn" #addTaskBtn color="primary" (click)="openForm()" mat-flat-button>Create new task</button>
 
 <app-add-task-form
-  #addTaskForm
   *ngIf="openFormValue"
   [open]="openFormValue"
   [button]="addTaskBtn"
   (newItemEvent)="closeForm($event)"
 ></app-add-task-form>
 
-<div class="todos">
-  <app-todo-item></app-todo-item>
-  <app-todo-item></app-todo-item>
-  <app-todo-item></app-todo-item>
+<div class="todos" *ngIf="todos$ | async as todos">
+  <ng-container *ngFor="let todoItem of todos">
+    <app-todo-item
+      id="todoItem.id"
+      [title]="todoItem.title"
+      [data]="todoItem.data"
+      [description]="todoItem.description || ''"
+      [done]="todoItem.done"
+    ></app-todo-item>
+  </ng-container>
+
 </div>
