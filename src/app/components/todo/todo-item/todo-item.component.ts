@@ -1,25 +1,40 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {TodoService} from 'src/app/services/todo.service';
+import { Component, Input } from '@angular/core';
+import { TodoService } from 'src/app/services/todo.service';
+import { ChangeTodoDialogComponent } from 'src/app/components/todo/change-todo-dialog/change-todo-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-todo-item',
   templateUrl: './todo-item.component.html',
   styleUrls: ['./todo-item.component.scss']
 })
-export class TodoItemComponent implements OnInit {
+export class TodoItemComponent{
   @Input() title = '';
-  @Input() data = '';
+  @Input() date = '';
   @Input() description = '';
-  @Input() done = false;
   @Input() id: any;
 
-  constructor(private todoService: TodoService) { }
+  constructor(private todoService: TodoService, public dialog: MatDialog) {}
 
-  ngOnInit(): void {
+  removeTodo(id: number, e: any) {
+    let answer = confirm('Do you want delete this todo?');
+    if (answer) {
+      this.todoService.deleteTodo(id)
+    } else {
+      e.source.checked = false;
+    }
   }
 
-  removeTodo(id: number) {
-    console.log(id);
-    this.todoService.deleteTodo(id);
+  changeTodo(id: number, title: string, date: string, description: string) {
+    const dialogRef = this.dialog.open(ChangeTodoDialogComponent, {
+      width: '360px',
+      data: {id: id, title: title, date: date, description: description},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.todoService.changeTodo(id, result);
+      }
+    });
   }
 }

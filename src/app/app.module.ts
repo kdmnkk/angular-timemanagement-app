@@ -29,6 +29,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 
 import {TodoApiService} from "./services/todo.api.service";
 import {TodoService} from "./services/todo.service";
+import { ChangeTodoDialogComponent } from './components/todo/change-todo-dialog/change-todo-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -41,25 +43,27 @@ import {TodoService} from "./services/todo.service";
     HomePageComponent,
     TitleComponent,
     AddTaskFormComponent,
-    TodoItemComponent
+    TodoItemComponent,
+    ChangeTodoDialogComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    AppRoutingModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatCardModule,
-    MatCheckboxModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		MatToolbarModule,
+		MatIconModule,
+		MatButtonModule,
+		AppRoutingModule,
+		MatFormFieldModule,
+		MatInputModule,
+		MatDatepickerModule,
+		MatNativeDateModule,
+		MatCardModule,
+		MatCheckboxModule,
+		FormsModule,
+		ReactiveFormsModule,
+		HttpClientModule,
+		MatDialogModule
+	],
   providers: [TodoApiService, TodoService, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
   bootstrap: [AppComponent]
 })

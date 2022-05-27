@@ -2,21 +2,18 @@
   <mat-card-header class="header">
     <mat-card-title>
       <mat-checkbox
-        [checked]="done"
+        (change)="removeTodo(id, $event)"
       >{{title}}</mat-checkbox>
 
-      <button mat-icon-button>
-        <mat-icon class="icon">create</mat-icon>
-      </button>
       <button
+        (click)="changeTodo(id, title, date, description)"
         mat-icon-button
-        (click)="removeTodo(id)"
       >
-        <mat-icon class="icon">delete</mat-icon>
+        <mat-icon class="icon">create</mat-icon>
       </button>
     </mat-card-title>
 
-    <mat-card-subtitle class="data">{{data | date:'dd/MM/yyyy'}}</mat-card-subtitle>
+    <mat-card-subtitle class="data">{{date | date:'dd/MM/yyyy'}}</mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>

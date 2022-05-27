@@ -22,4 +22,14 @@ export class TodoApiService {
   deleteData(id: number) {
     return this.http.delete<void>(`http://localhost:3000/todos/${id}`);
   }
+
+  putData(id: number, obj: TodoInterface): Observable<TodoInterface> {
+
+    return this.http.put<TodoInterface>(`http://localhost:3000/todos/${id}`, {
+      title: obj.title,
+      description:obj.description,
+      date:obj.date,
+      id: id
+    });
+  }
 }

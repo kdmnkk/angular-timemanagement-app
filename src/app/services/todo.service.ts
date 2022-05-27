@@ -26,8 +26,7 @@ export class TodoService {
   createTodo(obj: TodoInterface) {
     const todoItem: TodoInterface = {
       ...obj,
-      id: Math.floor(Math.random() * 1000000),
-      done: false
+      id: Math.floor(Math.random() * 1000000)
     };
 
     return this.todoApiService.postData(todoItem)
@@ -41,5 +40,15 @@ export class TodoService {
       .subscribe(() => {
         this._todos.next(this._todos.getValue().filter(item => item.id !== id));
       });
+  }
+
+  changeTodo(id: number, todo: TodoInterface) {
+    return this.todoApiService.putData(id, todo).subscribe(
+      () => {
+        let i = this._todos.getValue().findIndex(item => item.id === id);
+        this._todos.getValue()[i] = {id: id, ...todo};
+        this._todos.next(this._todos.getValue());
+      }
+    );
   }
 }

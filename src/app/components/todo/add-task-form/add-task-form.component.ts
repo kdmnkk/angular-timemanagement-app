@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter, HostListener, ElementRef, Input } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
-import {TodoService} from '../../../services/todo.service'
+import {TodoService} from 'src/app/services/todo.service'
 
 @Component({
   selector: 'app-add-task-form',
@@ -28,7 +28,7 @@ export class AddTaskFormComponent {
 
   form = this.fb.group({
     title: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(30)]),
-    data: new FormControl('', [Validators.required]),
+    date: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.maxLength(200)]),
   });
 
