@@ -1,0 +1,52 @@
+<h1 mat-dialog-title>Change your todo</h1>
+
+<div mat-dialog-content>
+  <form class="form" [formGroup]="form">
+    <mat-form-field
+      class="full-width"
+      appearance="fill"
+    >
+      <mat-label>Title</mat-label>
+      <input
+        formControlName="title"
+        [(ngModel)]="data.title"
+        matInput placeholder=""
+        value="{{data.title}}"
+        name="title"
+      >
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea
+        formControlName="description"
+        name="description"
+        [(ngModel)]="data.description"
+        matInput style="resize: none;"
+        value="{{data.description}}"
+      ></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Choose a date</mat-label>
+      <input
+        formControlName="date"
+        [(ngModel)]="data.date"
+        matInput
+        [matDatepicker]="picker"
+        name="date"
+        [formControl]="dateValue"
+      >
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </form>
+</div>
+
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="form.value" cdkFocusInitial>Ok</button>
+</div>
+
