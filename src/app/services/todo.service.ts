@@ -1,16 +1,45 @@
 import { Injectable } from '@angular/core';
-import {TodoApiService} from './todo.api.service';
+import { TodoApiService } from './todo.api.service';
+import { TodoInterface } from '../iterfaces/todo.interface';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
+  private _todos = new BehaviorSubject<TodoInterface[]>([]);
 
-  constructor(private TodoApiService: TodoApiService) { }
-
-  logTodos() {
-    return this.TodoApiService.getTodos()
+  constructor(private todoApiService: TodoApiService) {
+    this.loadInitialData();
   }
 
+  get todos(): Observable<TodoInterface[]> {
+    return this._todos.asObservable();
+  }
 
+  loadInitialData(): void {
+    this.todoApiService.getData().subscribe((todos: TodoInterface[]) => {
+      this._todos.next(todos.reverse());
+    });
+  }
+
+  createTodo(obj: TodoInterface) {
+    const todoItem: TodoInterface = {
+      ...obj,
+      id: Math.floor(Math.random() * 1000000),
+      done: false
+    };
+
+    return this.todoApiService.postData(todoItem)
+      .subscribe(() => {
+        this._todos.getValue().unshift(todoItem);
+      });
+  }
+
+  deleteTodo(id: number) {
+    return this.todoApiService.deleteData(id)
+      .subscribe(() => {
+        this._todos.next(this._todos.getValue().filter(item => item.id !== id));
+      });
+  }
 }

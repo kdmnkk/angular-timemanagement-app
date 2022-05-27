@@ -9,9 +9,9 @@ import {TodoService} from '../../services/todo.service'
 export class TodoComponent{
   title = 'Your TODOs';
   openFormValue = false;
-  todos$ = this.TodoService.logTodos();
+  todos$ = this.todoService.todos;
 
-  constructor(private TodoService: TodoService) {}
+  constructor(private todoService: TodoService) {}
 
   openForm(): void {
     this.openFormValue = !this.openFormValue;

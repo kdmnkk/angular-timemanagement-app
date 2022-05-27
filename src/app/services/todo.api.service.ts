@@ -11,11 +11,15 @@ export class TodoApiService {
 
   constructor(private http: HttpClient) { }
 
-  getTodos(): Observable<TodoInterface[]> {
+  getData(): Observable<TodoInterface[]> {
     return this.http.get<TodoInterface[]>("http://localhost:3000/todos");
   }
 
-  // postTodo(obj: TodoInterface) {
-  //   this.http.post("http://localhost:3000/todos", obj);
-  // }
+  postData(obj: TodoInterface) {
+    return this.http.post<TodoInterface[]>("http://localhost:3000/todos", obj);
+  }
+
+  deleteData(id: number) {
+    return this.http.delete<void>(`http://localhost:3000/todos/${id}`);
+  }
 }

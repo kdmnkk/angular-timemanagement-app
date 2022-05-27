@@ -23,7 +23,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from "@angular/material/core";
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import {MatCardModule} from "@angular/material/card";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 
@@ -60,7 +60,7 @@ import {TodoService} from "./services/todo.service";
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [TodoApiService, TodoService],
+  providers: [TodoApiService, TodoService, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

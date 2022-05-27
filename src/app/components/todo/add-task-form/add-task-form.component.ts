@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, HostListener, ElementRef, Input } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
+import {TodoService} from '../../../services/todo.service'
 
 @Component({
   selector: 'app-add-task-form',
@@ -31,10 +32,15 @@ export class AddTaskFormComponent {
     description: new FormControl('', [Validators.maxLength(200)]),
   });
 
-  constructor(private fb: FormBuilder, private _eref: ElementRef) {}
+  constructor(
+    private fb: FormBuilder,
+    private _eref: ElementRef,
+    private TodoService: TodoService
+  ) {}
 
   submit() {
-    console.log(this.form);
+    this.TodoService.createTodo(this.form.value);
+    this.closeForm();
   }
 
   closeForm() {

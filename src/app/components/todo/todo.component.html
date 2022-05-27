@@ -16,7 +16,8 @@
       [title]="todoItem.title"
       [data]="todoItem.data"
       [description]="todoItem.description || ''"
-      [done]="todoItem.done"
+      [done]="!!todoItem.done"
+      [id]="todoItem.id"
     ></app-todo-item>
   </ng-container>
 

@@ -1,7 +1,7 @@
 export interface TodoInterface {
-  id: number;
+  id?: number;
   title: string;
   data: string;
-  description?: string;
-  done: boolean;
+  description: string;
+  done?: boolean;
 }
