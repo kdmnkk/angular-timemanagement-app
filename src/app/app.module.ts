@@ -2,69 +2,37 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { MenuComponent } from './components/menu/menu.component';
-import { TodoComponent } from './components/todo/todo.component';
-import { TablesComponent } from './components/tables/tables.component';
-import { CalendarComponent } from './components/calendar/calendar.component';
-import { HomePageComponent } from './components/home-page/home-page.component';
-import { TitleComponent } from './components/title/title.component';
-import { AddTaskFormComponent } from './components/todo/add-task-form/add-task-form.component';
-import { TodoItemComponent } from './components/todo/todo-item/todo-item.component';
+import { HeaderComponent } from './@shared/components/header/header.component';
+import { MenuComponent } from './@shared/components/menu/menu.component';
+import { TablesComponent } from './@shared/components/tables/tables.component';
+import { CalendarComponent } from './@shared/components/calendar/calendar.component';
+import { HomePageComponent } from './@shared/components/home-page/home-page.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import {HttpClientModule} from "@angular/common/http";
 
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from "@angular/material/button";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
-import {MatCardModule} from "@angular/material/card";
-import {MatCheckboxModule} from "@angular/material/checkbox";
-
-import {TodoApiService} from "./services/todo.api.service";
-import {TodoService} from "./services/todo.service";
-import { ChangeTodoDialogComponent } from './components/todo/change-todo-dialog/change-todo-dialog.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import {TodoApiService} from "./@shared/components/services/todo.api.service";
+import {TodoService} from "./@shared/components/services/todo.service";
+import { SharedModule } from 'src/app/@shared/shared.module';
+import { TodoModule } from 'src/app/@todo/todo.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     MenuComponent,
-    TodoComponent,
     TablesComponent,
     CalendarComponent,
     HomePageComponent,
-    TitleComponent,
-    AddTaskFormComponent,
-    TodoItemComponent,
-    ChangeTodoDialogComponent
   ],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
-		MatToolbarModule,
-		MatIconModule,
-		MatButtonModule,
 		AppRoutingModule,
-		MatFormFieldModule,
-		MatInputModule,
-		MatDatepickerModule,
-		MatNativeDateModule,
-		MatCardModule,
-		MatCheckboxModule,
-		FormsModule,
-		ReactiveFormsModule,
-		HttpClientModule,
-		MatDialogModule
+    SharedModule,
+    TodoModule
 	],
-  providers: [TodoApiService, TodoService, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
+  providers: [TodoApiService, TodoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

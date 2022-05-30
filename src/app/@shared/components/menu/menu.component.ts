@@ -13,7 +13,7 @@ export const NavItems: NavItem[] = [
   },
   {
     icon: 'list',
-    route: 'todo'
+    route: 'todos'
   },
   {
     icon: 'view_module',

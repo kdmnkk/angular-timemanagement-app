@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {TodoInterface} from "../iterfaces/todo.interface";
+import {TodoInterface} from "src/app/@shared/components/iterfaces/todo.interface";
 import {Observable} from "rxjs";
 
 

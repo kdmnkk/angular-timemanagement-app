@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AnswerFormComponent } from './answer-form.component';
+import { AnswerFormComponent } from 'src/app/@shared/components/answer-form/answer-form.component';
 
 describe('AnswerFormComponent', () => {
   let component: AnswerFormComponent;

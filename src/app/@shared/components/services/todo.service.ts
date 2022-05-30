@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { TodoApiService } from './todo.api.service';
-import { TodoInterface } from '../iterfaces/todo.interface';
+import { TodoApiService } from 'src/app/@shared/components/services/todo.api.service';
+import { TodoInterface } from 'src/app/@shared/components/iterfaces/todo.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -48,6 +48,7 @@ export class TodoService {
         let i = this._todos.getValue().findIndex(item => item.id === id);
         this._todos.getValue()[i] = {id: id, ...todo};
         this._todos.next(this._todos.getValue());
+      //  console.log();
       }
     );
   }

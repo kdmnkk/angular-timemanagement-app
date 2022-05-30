@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { TodoService } from 'src/app/services/todo.service';
-import { ChangeTodoDialogComponent } from 'src/app/components/todo/change-todo-dialog/change-todo-dialog.component';
+import { TodoService } from 'src/app/@shared/components/services/todo.service';
+import { ChangeTodoDialogComponent } from 'src/app/@todo/components/change-todo-dialog/change-todo-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -17,7 +17,7 @@ export class TodoItemComponent{
   constructor(private todoService: TodoService, public dialog: MatDialog) {}
 
   removeTodo(id: number, e: any) {
-    let answer = confirm('Do you want delete this todo?');
+    let answer = confirm('Do you want delete this todos?');
     if (answer) {
       this.todoService.deleteTodo(id)
     } else {

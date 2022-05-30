@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter, HostListener, ElementRef, Input } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
-import {TodoService} from 'src/app/services/todo.service'
+import {TodoService} from 'src/app/@shared/components/services/todo.service'
 
 @Component({
   selector: 'app-add-task-form',

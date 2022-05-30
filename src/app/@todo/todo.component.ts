@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {TodoService} from '../../services/todo.service'
+import {TodoService} from 'src/app/@shared/components/services/todo.service'
 
 @Component({
-  selector: 'app-todo',
+  selector: 'app-todos',
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss']
 })
